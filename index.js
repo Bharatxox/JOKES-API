@@ -1,5 +1,6 @@
 const express = require("express");
 const jokes = require("./data");
+const images = require("./images");
 
 const app = express();
 
@@ -11,9 +12,17 @@ const validId = (id) => {
   return false;
 };
 
-app.get("/jokes", (req, res) => {
+app.get("/joke/random", (req, res) => {
   const randomJokesIndex = Math.floor(Math.random() * jokes.length);
-  return res.status(200).json(jokes[randomJokesIndex]);
+  const randomImages = Math.floor(Math.random() * images.length);
+  return res.status(200).json({
+    joke: jokes[randomJokesIndex].joke,
+    image: images[randomImages].url,
+  });
+});
+
+app.get("/jokes", (req, res) => {
+  return res.status(200).json({});
 });
 
 app.get("/jokes/:id", (req, res) => {
