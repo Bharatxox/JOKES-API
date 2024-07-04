@@ -1,8 +1,11 @@
 const express = require("express");
 const jokes = require("./data");
 const images = require("./images");
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 
 const validId = (id) => {
   if (jokes.some((joke) => joke.index === id)) {
