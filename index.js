@@ -22,7 +22,7 @@ app.get("/joke/random", (req, res) => {
 });
 
 app.get("/jokes", (req, res) => {
-  return res.status(200).json({});
+  return res.status(200).json(jokes);
 });
 
 app.get("/jokes/:id", (req, res) => {
